@@ -14,7 +14,6 @@ env:
 jobs:
   install_dependencies:
     steps:
-    - name: installing dependencies
       run: nmp install
   check_coding_style:
     runs-on: ubuntu-latest
