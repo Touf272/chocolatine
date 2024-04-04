@@ -16,7 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
-    - run: | 
+    - uses: action/checkout@v4
+      with:
+        fect-depth: 0
+    - run: |
         check.sh $(pwd) $(pwd)
         if [ -s coding-style-report.log ]; then
           exit 0
@@ -27,6 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
+    - uses: action/checkout@v4
+      with:
+        fect-depth: 0
     - run: |
         make
         make clean
