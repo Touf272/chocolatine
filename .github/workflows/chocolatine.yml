@@ -2,7 +2,6 @@ name: chocolatine
 run-name: ${{ github.actor }} is eating a chocolatine
 
 on: [push]
-env:
 
 jobs:
   - name: installing dependencies
