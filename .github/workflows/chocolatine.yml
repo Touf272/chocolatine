@@ -14,12 +14,12 @@ env:
 jobs:
   install_dependencies:
     steps:
-      run: nmp install
+      - run: nmp install
   check_coding_style:
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
-      run: | 
+      - run: | 
         check.sh $(pwd) $(pwd)
         if [ -s coding-style-report.log ]; then
           exit 0
@@ -30,6 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       run: make
       run: make clean
