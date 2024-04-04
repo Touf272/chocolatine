@@ -16,23 +16,26 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
-    - uses: action/checkout@v4
-      with:
-        fect-depth: 0
-    - run: |
-        check.sh $(pwd) $(pwd)
-        if [ -s coding-style-report.log ]; then
+      - uses: action/checkout@v4
+        with:
+          fect-depth: 0
+      - name: coding_style_checker
+        run: |
+          check.sh $(pwd) $(pwd)
+          if [ -s coding-style-report.log ]; then
           exit 0
-        fi
-        echo "::error::" | cat coding-style-reports.log
+          fi
+          echo "::error::" | cat coding-style-reports.log
+
   check_program_compilation:
     timeout-minutes: 2
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
-    - uses: action/checkout@v4
-      with:
-        fect-depth: 0
-    - run: |
-        make
-        make clean
+      - uses: action/checkout@v4
+        with:
+          fect-depth: 0
+      - name: testing makefile
+        run: |
+          make
+          make clean
