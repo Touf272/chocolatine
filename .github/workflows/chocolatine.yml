@@ -6,7 +6,7 @@ env:
 
 jobs:
   - name: installing dependencies
-    run: nmp install
+    - run: nmp install
   - name: check_coding_style
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
