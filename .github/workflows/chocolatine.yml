@@ -10,7 +10,7 @@ jobs:
   - name: check_coding_style
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
-    steps:
+    - steps:
       run: check.sh $(pwd) $(pwd)
       if([stat -c coding-style-report.log] != 0):
         run: echo "::error" | cat coding-style-reports.log
@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 2
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
-    steps:
+    - steps:
       uses: actions/checkout@v4
         with:
           fetch-depth: 0
