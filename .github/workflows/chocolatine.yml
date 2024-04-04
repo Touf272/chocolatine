@@ -13,6 +13,7 @@ env:
 
 jobs:
   install_dependencies:
+    runs-on: ubuntu-latest
     steps:
     - run: nmp install
   check_coding_style:
