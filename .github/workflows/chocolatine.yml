@@ -8,16 +8,18 @@ jobs:
   - name: installing dependencies
     run: nmp install
   - name: check_coding_style
-    runs-on:  ghcr.io/epitech/coding-style-checker:latest
+    runs-on: ubuntu-latest
+    container: ghcr.io/epitech/coding-style-checker:latest
     steps:
       - run: check.sh $(pwd) $(pwd)
       if([stat -c coding-style-report.log] != 0):
         - run: echo "::error" | cat coding-style-reports.log
   - name: check_program_compilation
     timeout-minutes: 2
-    runs-on: epitechcontent/epitest-docker
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - run: make $(pwd)
