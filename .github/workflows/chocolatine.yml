@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
-      - run: check.sh $(pwd) $(pwd)
+      run: check.sh $(pwd) $(pwd)
       if([stat -c coding-style-report.log] != 0):
-        - run: echo "::error" | cat coding-style-reports.log
+        run: echo "::error" | cat coding-style-reports.log
   - name: check_program_compilation
     timeout-minutes: 2
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
-      - uses: actions/checkout@v4
+      uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: make $(pwd)
+      run: make $(pwd)
       if ([test -f ]):
-      - run: make clean $(pwd)
+      run: make clean $(pwd)
