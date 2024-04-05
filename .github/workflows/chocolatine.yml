@@ -22,7 +22,7 @@ jobs:
         run: |
           check.sh $(pwd) $(pwd)
           if [ -s coding-style-reports.log ]; then
-            content=$( cat coding-style-reports.log )
+            content=$(<coding-style-reports.log)
             while [ $content != $line ]; do
               line=$( echo "$content" | cut -d'\n' -f1 )
               echo "::$line::"
