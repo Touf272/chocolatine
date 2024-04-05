@@ -43,7 +43,7 @@ jobs:
         run: make clean
       - name: checking executables
         run: |
-          while $EXECUTABLES != $string ; do: 
+          while [ $EXECUTABLES != $string ]; do: 
               string=$( echo "$EXECUTABLES" | cut -d\; -f1 )
               if [ -x string]; then
                 exit 1
