@@ -47,6 +47,7 @@ jobs:
               string=$( echo "$EXECUTABLES" | cut -d\; -f1 )
               if [ -x string]; then
                 exit 1
+          done
 
   run_tests:
     needs: [check_program_compilation]
