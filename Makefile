@@ -20,16 +20,21 @@ CFLAGS += -Wextra
 
 CC = gcc
 
+LS = ls
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) -o $(NAME) $(OBJS) $(CFLAGS)
+	$(CC) -o $(NAME) $(OBJS) $(CFLAGS)
 
 
 clean:
-		rm -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-		rm -f $(NAME)
+	rm -f $(NAME)
+
+tests_run:
+	$(LS)
 
 re: fclean all
