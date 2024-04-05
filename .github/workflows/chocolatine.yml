@@ -28,14 +28,43 @@ jobs:
           exit 1
 
   check_program_compilation:
-    timeout-minutes: 2
+    needs: [check_coding_style]
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
       - uses: actions/checkout@v4
         with:
           fect-depth: 0
-      - name: testing makefile
+      - name: make
+        timeout-minutes: 2
         run: |
           make
-          make clean
+      - name: make clean
+        run: make clean
+      - name: checking executables
+        run: |
+          while($EXECUTABLES != $string):
+            do: 
+              string=$( echo $EXECUTABLES | cut -d\; -f1 )
+              if [ -x string]; then
+              exit 1
+
+  run_tests:
+    needs: [check_program_compilation]
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fect-depth: 0
+      - name: run tests
+        timeout-minutes: 2
+        run: make tests_run
+
+  push_to_mirror:
+    needs: [run_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fect-depth: 0
