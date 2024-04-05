@@ -27,7 +27,7 @@ jobs:
               title=$( echo "$line" | cut -d':' -f3 )
               file=$( echo "$line" | cut -d':' -f1 )
               line=$( echo "$line" | cut -d':' -f2 )
-              msg=$( echo "$line" | cut -d':' -41 )
+              msg=$( echo "$line" | cut -d':' -f4 )
               echo "::error title="$title coding style error" file="$file", line=$line:: $msg"
             done < $file_name
             exit 1
