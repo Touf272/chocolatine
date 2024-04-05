@@ -44,9 +44,9 @@ jobs:
       - name: checking executables
         run: |
           while $EXECUTABLES != $string ; do: 
-              string=$( echo $EXECUTABLES | cut -d\; -f1 )
+              string=$( echo "$EXECUTABLES" | cut -d\; -f1 )
               if [ -x string]; then
-              exit 1
+                exit 1
 
   run_tests:
     needs: [check_program_compilation]
