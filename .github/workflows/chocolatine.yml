@@ -7,7 +7,7 @@ on:
     branches-ignore: "ga-ignore-*"
 
 env:
-  EXECUTABLES: ""
+  EXECUTABLES: "a.out"
   MIRROR_URL: ""
 
 jobs:
