@@ -7,8 +7,8 @@ on:
     branches-ignore: "ga-ignore-*"
 
 env:
-  EXECUTABLES: ""
-  MIRROR_URL: ""
+  EXECUTABLES: "a.out"
+  MIRROR_URL: "git@github.com:EpitechPromo2028/B-DOP-200-REN-2-1-chocolatine-antoine.quillet.git"
 
 jobs:
   check_coding_style:
@@ -72,12 +72,16 @@ jobs:
         run: make tests_run
 
   push_to_mirror:
-    #needs: [run_tests]
+    needs: [run_tests]
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+             ${{ secrets.SSH_PRIVATE_KEY }}
