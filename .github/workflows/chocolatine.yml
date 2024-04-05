@@ -28,7 +28,7 @@ jobs:
               file=$( echo "$line" | cut -d':' -f1 )
               prec=$( echo "$line" | cut -d':' -f2 )
               msg=$( echo "$line" | cut -d':' -f4 )
-              echo "::error title="$title coding style error", file="$file", line="$prec":: $msg"
+              echo "::error title=$title coding style error, file=$file, line=$prec:: $msg"
             done < $file_name
             exit 1
           fi
