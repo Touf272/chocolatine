@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fect-depth: 0
+          fetch-depth: 0
       - name: coding_style_checker
         run: |
           check.sh $(pwd) $(pwd)
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fect-depth: 0
+          fetch-depth: 0
       - name: make
         timeout-minutes: 2
         run: |
@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fect-depth: 0
+          fetch-depth: 0
       - name: run tests
         timeout-minutes: 2
         run: make tests_run
@@ -67,4 +67,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fect-depth: 0
+          fetch-depth: 0
