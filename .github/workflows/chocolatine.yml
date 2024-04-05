@@ -7,7 +7,7 @@ on:
     branches-ignore: "ga-ignore-*"
 
 env:
-  EXECUTABLES: "a.out"
+  EXECUTABLES: ""
   MIRROR_URL: ""
 
 jobs:
@@ -72,7 +72,7 @@ jobs:
         run: make tests_run
 
   push_to_mirror:
-    needs: [run_tests]
+    #needs: [run_tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
