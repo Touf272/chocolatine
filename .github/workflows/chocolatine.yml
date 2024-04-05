@@ -28,7 +28,7 @@ jobs:
               file=$( echo "$line" | cut -d':' -f1 )
               prec=$( echo "$line" | cut -d':' -f2 )
               msg=$( echo "$line" | cut -d':' -f4 )
-              echo "::error title=$title coding style error,file=$file,line=$prec:: $msg"
+              echo "::error title=$title coding style error,file=$file, line=$prec:: $msg"
             done < $file_name
             exit 1
           fi
@@ -78,5 +78,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: end !
-        run: ls -la
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          ssh_private_key:
+            ${{ secrets.SSH_PRIVATE_KEY }}
