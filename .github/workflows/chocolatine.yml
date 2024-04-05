@@ -44,10 +44,11 @@ jobs:
       - name: checking executables
         run: |
           while [ $EXECUTABLES != $string ]; do: 
-              string=$( echo "$EXECUTABLES" | cut -d\; -f1 )
-              if [ -x string]; then
+              string=$( echo "$EXECUTABLES" | cut -d';' -f1 )
+              if [ ! -x "$string" ]; then
                 exit 1
               fi
+              EXECUTABLES=$( echo "EXECUTABLES" | cut -d';' -f2- )
           done
           exit 0
 
