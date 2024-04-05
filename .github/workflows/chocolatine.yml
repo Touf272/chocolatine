@@ -21,11 +21,11 @@ jobs:
       - name: coding_style_checker
         run: |
           check.sh $(pwd) $(pwd)
-          if [ -s coding-style-report.log ]; then
-          exit 0
+          if [! -s coding-style-report.log ]; then
+            exit 0
           fi
-          echo "::error::" | cat coding-style-reports.log
-          exit 1
+            echo "::error::" | cat coding-style-reports.log
+            exit 1
 
   check_program_compilation:
     needs: [check_coding_style]
