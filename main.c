@@ -10,5 +10,5 @@
 int main(void)
 {
     printf("Hello World !!!");
-    return i;
+    return 0;
 }
