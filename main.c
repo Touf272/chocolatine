@@ -9,9 +9,6 @@
 
 int main(void)
 {
-    //this is not meant to be here
     printf("Hello World !!!");
-    return 0;
-        
-
+    return i;
 }
